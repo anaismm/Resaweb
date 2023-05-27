@@ -1,0 +1,256 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Elsie', cursive, sans-serif;
+    
+}
+
+/* HEADER ET NAVBAR */
+ 
+nav{
+    width: 100vw;
+    position: fixed;
+    top: 25;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: white; */
+    transition: 0.6s;
+    /* border-bottom: solid 1px black; */
+    z-index: 100;
+    /* background-color:rgba(22, 136, 172, 0.7) ; */   
+} 
+
+.sticky {
+    background: white;
+    border-bottom: 2px solid black;
+    padding-top: 5px;
+    height: 90px;
+}
+
+nav img{
+    width:150px;
+    padding-top:3px ;
+    margin-left: 30px;
+}
+
+
+nav li{
+    display: inline;
+    list-style: none;
+    margin-right: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Elsie', cursive;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: black;
+    position: relative;
+}
+
+nav a:not(.logo):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -4px;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+  
+nav a:hover::after {
+    transition: transform 0.3s ease;
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* LIGNES ET TITRE CONCEPT */
+.lineconcept{
+    display: flex;
+    align-items: center;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20vh;
+    margin-bottom: 50px;
+}
+
+.line{
+    width: 100%;
+    border-bottom: 3px solid #1688acd4;
+
+}
+
+.titre_concept {
+    font-size: 2.25rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    margin-top: 0;
+    font-weight: 900;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* margin pour espacer entre le titre et les traits */
+}
+
+/* BLOC CONCEPT */
+.concept{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.img_concept{
+    background-image: url(./img/avion2.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 26vw;
+    height: 34vw;
+    border-radius: 10px;
+}
+
+.txt_concept p{
+    width: fit-content;
+    max-width: 45vw;
+    background-color:#1688acd4 ;
+    padding: 20px;
+    border-radius: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    line-height: 22px;
+    box-shadow: 2px 5px 5px 1px rgba(115,111,111,0.75);
+}
+
+.txt_concept span{
+    font-weight: 900;
+}
+
+.valuers-container{
+    display: flex;
+}
+
+.valeurs{
+    font-size: 1.1rem;
+    color: rgb(251, 189, 18);
+}
+
+
+@media(max-width:1190px){
+    .lineconcept{
+        width:900px;
+    }
+
+    .txt_concept p{
+        font-size: 0.9rem;
+        max-width: 55vw;
+    }
+
+    .img_concept{
+        height: 40vw;
+    }
+}
+
+@media(max-width:1050px){ 
+    .lineconcept{
+    width:700px;
+    }
+
+    .img_concept{
+        height: 50vw;
+    }
+
+    .txt_concept p{
+        max-width: 60vw;
+    }
+}
+
+
+@media(max-width:940px){
+    .concept{
+        gap:20px;
+    }
+    .img_concept{
+        height: 53vw;
+    }
+
+    .txt_concept p{
+        max-width: 65vw;
+        font-size: 0.8rem;
+    }
+
+    .txt_concept span{
+        font-weight: 900;
+        font-size: 0.9rem;
+    }
+}
+
+@media(max-width:790px){
+    .concept{
+        gap:10px;
+    }
+    .txt_concept p{
+        font-size: 0.7rem;
+    }
+
+    .txt_concept span{
+        font-weight: 900;
+        font-size: 0.8rem;
+    }
+
+    .img_concept{
+        height: 60vw;
+    }
+    
+}
+
+/* BLOC CREATRICE */
+.creatrice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+
+.txt_creatrice p{
+    width: fit-content;
+    max-width: 45vw;
+    background-color:#1688acd4  ;
+    padding: 20px;
+    border-radius: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    line-height: 22px;
+    box-shadow: 2px 5px 5px 1px rgba(115,111,111,0.75);
+}
+
+.img_creatrice{
+    background-image: url(./img/creatrice.png);
+    background-size: cover;
+    background-position: center;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10px;
+}
+
+@media(max-width:950px){
+    .lineconcept{
+        width:700px;
+    }
+
+    .img_creatrice{
+        height: 30vw;
+        width: 30vw;
+    }
+}

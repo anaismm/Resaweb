@@ -1,0 +1,844 @@
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Elsie', cursive, sans-serif;
+    
+}
+
+/* HEADER ET NAVBAR */
+ 
+nav{
+    width: 100vw;
+    position: fixed;
+    top: 25;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: white; */
+    transition: 0.6s;
+    /* border-bottom: solid 1px black; */
+    z-index: 100;
+    /* background-color:rgba(22, 136, 172, 0.7) ; */   
+} 
+
+.sticky {
+    background: white;
+    border-bottom: 2px solid black;
+    padding-top: 5px;
+    height: 90px;
+}
+
+nav img{
+    width:150px;
+    padding-top:3px ;
+    margin-left: 30px;
+}
+
+
+
+nav li{
+    display: inline;
+    list-style: none;
+    margin-right: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    font-family: 'Elsie', cursive;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: black;
+    position: relative;
+}
+
+nav a:not(.logo):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -4px;
+    left: 0;
+    background-color: black;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+  
+nav a:hover::after {
+    transition: transform 0.3s ease;
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+/* IMAGES ACCUEIL A FAIRE QUAND ON ARRA VU LE GRID !!! */
+.container_acc{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 40vw;
+    height: 55vh;
+    margin-left: 40px;
+    /* border: solid 2px black; */
+}
+
+.img_nyc_acc{
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    background:url(img/nyc_acc.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+
+}
+
+.img_londres_acc{
+    grid-row: 2/ span 2;
+    grid-column: 1;
+    background-image: url(./img/londres_acc.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    
+}
+
+.img_sydney_acc{
+    grid-row: 2;
+    grid-column:2;
+    background-image: url(./img/australie_acc.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.img_malte_acc{
+    grid-row: 3;
+    grid-column:2;
+    background-image: url(./img/malte_acc.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+
+.accueil{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:50px;
+    padding-top: 20vh;
+}
+
+h1{
+    text-align: center; 
+}
+
+h1 span{
+    font-weight: 400;
+    font-size: 1.5rem; 
+}
+
+.titre{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 50px;
+}
+
+@media(max-width:1080px){
+    .container_acc{
+        width: 60vw;
+        height: 50vh;
+        
+    }
+}
+
+@media(max-width:920px){
+    .container_acc{
+        width: 80vw;
+        height: 40vh;
+        
+    }
+}
+
+@media(max-width:840px){
+    .container_acc{
+        width: 90vw;
+        height: 30vh;
+        
+    }
+}
+
+@media(max-width:920px){
+    .h1{
+        font-size: 1.2rem;
+    }
+    
+}
+@media(max-width:840px){
+    h1{
+        font-size: 1.1rem;
+    }
+}
+
+@media(max-width:1080px){
+    h1 span{
+        font-weight: 400;
+        font-size: 1.3rem; 
+    }
+}
+
+@media(max-width:920px){
+    h1 span{
+        font-weight: 400;
+        font-size: 1.1rem; 
+    }
+}
+
+/* SEARCH BARRE */
+form{
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: auto;
+    background-color:rgba(22, 136, 172, 0.83) ;
+    /* height: 12vh; */
+    border-radius: 10px;
+    margin-top:30px;
+}
+
+
+.field{
+    background-color: #B2E8FA;
+    max-width: fit-content;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    padding: 10px;
+    
+}
+
+.field, input[type="submit"] {
+    min-height: 70px;
+}
+
+.field:hover {
+    opacity: 0.8;
+}
+
+.field img{
+    width: 3vw;
+    height: 3vw;
+}
+
+.select{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 5px;
+    appearance: none;
+    background: url(./img/flbas2.png) ;
+}
+
+.select small{
+    margin-bottom: 3px;
+    margin-left: 10px;
+}
+
+select:not(option){
+    background-color: #B2E8FA;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
+input{
+    width:fit-content;
+    background: linear-gradient(100.81deg, rgba(56, 238, 216, 0.84) 5.52%, rgba(33, 177, 222, 0.5964) 106.72%);
+    border: none;
+    border-radius: 5px;
+    padding: 0 30px;
+    margin: 10px;
+    font-family: 'Elsie','sans-serif';
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-search:hover{
+    background: linear-gradient(204deg, rgba(33,177,222,1) 49%, rgba(71,116,237,1) 77%);
+}
+
+
+
+
+
+/* NOUVEAUTES PRODUITS */
+h2{
+    margin-top:100px;
+    margin-left: 40px;
+}
+
+.cardcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+.cardcontainer a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    border-radius:5px;
+    background-color: rgba(22, 136, 172, 0.83);
+    height: 30vw;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: 2px 5px 5px 1px rgba(115,111,111,0.75);
+}
+
+.card:hover{
+    opacity: 0.7;
+}
+
+.img_drapeau_usa{
+    border-top-left-radius: 5px;
+    z-index:10;
+    width:5vw;
+    height: 3vw;
+    position: absolute;
+    top:0px;
+    left: 0px;
+}
+
+.img_card{
+    background-image: url(./img/los_angeles.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    z-index: 6;
+    width:20vw;
+    height: 20vw;
+}
+
+h3{
+    font-size: 1.2rem;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}
+
+.people {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.people p{
+    margin-left: 10px;
+}
+
+.calendar {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.calendar p {
+    margin-left: 10px;
+}
+
+.activities_logo {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.activities_logo p{
+    margin-left: 10px;
+}
+
+.pays{
+    background-color: white;
+    border-radius: 10px;
+    max-width: fit-content;
+    padding: 3px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.bloc_prix{
+    background-color: white;
+    max-width: fit-content;
+    padding: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
+}
+
+.prix{
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.bloc_pays_et_prix{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+@media(max-width:1190px){
+    h3{
+        font-size: 1rem;
+    }
+
+    .card p{
+        font-size: 0.8rem;
+    }
+}
+
+@media(max-width:1030px){
+    h3{
+        font-size: 0.9rem;
+        padding-top: 5px;
+    }
+
+    .bloc_prix{
+        padding: 3px;
+    }
+}
+
+@media(max-width:940px){
+    .card{
+        width:25vw;
+        height: 35vw;
+    }
+
+    .img_card{
+        width:25vw;
+        height: 20vw;
+    }
+
+    h3{
+        font-size: 1rem;
+        padding-top: 5px;
+    }
+}
+
+@media(max-width:800px){
+    .card{
+        width:30vw;
+        height: 40vw;
+    }
+
+    .img_card{
+        width:30vw;
+        height:20vw;
+    }
+
+    h3{
+        font-size: 1rem;
+        padding-top: 5px;
+    }
+}
+
+@media (max-width: 975px) {
+    .cardcontainer a:last-child {
+        display: none;
+    }
+}
+
+
+/* SLIDER */
+
+.dest_container{
+    width: 80%;
+    margin: auto;
+    margin-top: -20px;
+}
+
+.all_dest {
+    display: flex;
+    gap: 32px;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.all_dest a{
+    text-decoration: none;
+}
+
+.dest_card{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.dest_card{
+    height: 30vw;
+    width: 20vw;
+    /* max-width: 300px;
+    max-height: 450px; */
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.dest_card:hover{
+    transform: scale(0.9);
+}
+
+.dest_card.etats-unis{
+    background-image: url(./img/nyc_dest.jpg);
+    background-size: cover;
+}
+
+.dest_card.angleterre{
+    background-image: url(./img/londres_dest.jpeg);
+    background-size: cover;
+}
+
+.dest_card.australie{
+    background-image: url(./img/australie_dest.jpg);
+    background-size: cover;
+}
+
+.dest_card.malte{
+    background-image: url(./img/malte_dest.png);
+    background-size: cover;
+}
+
+.dest_card.canada{
+    background-image: url(./img/canada_dest2.png);
+    background-size: cover;
+}
+
+.dest_card h3{
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 5px;
+}
+
+@media(max-width:915px){
+    .dest_card h3{
+        font-size: 1.2rem;
+        color: white;
+        margin-right: 5px;
+    }
+}
+
+
+/* BOUTON SLIDER */
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom:10px ;
+}
+
+.btn-container img{
+    width:40px;
+    cursor: pointer;
+}
+
+.btn-container img:hover{
+   opacity: 0.3;
+}
+
+@media (max-width:1015px) {
+    .btn-container img{
+        width:30px;
+        cursor: pointer;
+    }
+}
+
+
+
+/* BLOCS COURS ET ACTIVITES */
+hr{
+    border: 3px solid #1688acd4;
+    width: 50%;
+    margin: auto;
+    border-radius: 5px;
+    margin-top: 100px;
+    
+}
+
+h4{
+    font-weight: 400;
+    text-align: center;
+    font-size: 1.7rem;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.cours_et_act{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.cours{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin-left: 20px;
+    background-color: #1688acd4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.activities{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    margin-right: 20px;
+    background-color: #1688acd4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cours_et_act p{
+    padding: 5px;
+    margin-top: 5px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.cours_et_act img{
+    margin: auto;
+}
+
+h6{
+    font-size: 1.3rem;
+    text-align: center;
+    padding-top: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+
+/* TEMOIGNAGES */
+.temoignages_container{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.temoignage{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    /* margin-left: 50px; */
+    background-color: #1688acd4;
+    border-radius: 5px;
+    position: relative;
+}
+
+.tem_img{
+    width: 25vw;
+    height: 13vw;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.temoignage p {
+    padding: 15px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.temoignage h3{
+    text-align: left;
+    padding-left: 10px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.tem_candice{
+    border-radius: 50%;
+    border: solid 1px black;
+    background-image: url(./img/candice2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    
+}
+
+.tem_flo{
+    border-radius: 50%;
+    border: solid 1px black;
+    background-image: url(./img/flo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    
+}
+
+.tem_oceane{
+    border-radius: 50%;
+    border: solid 1px black;
+    background-image: url(./img/oceane2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    
+}
+
+.tem_people{
+    position: absolute;
+    top: 12vw;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 7vw;
+    height: 7vw;
+}
+
+/* MEDIA QUERIE DES TEMOIGNAGES */
+@media(max-width:815px){
+    .temoignages_container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 60px;
+        margin-top: 20px;
+    }
+
+    .temoignage{
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+        /* margin-left: 50px; */
+        background-color: #1688acd4;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .tem_img{
+        width: 35vw;
+        height: 15vw;
+        border-top-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        
+    }
+
+    .tem_people{
+        position: absolute;
+        top: 10vw;
+        right: 20px;
+        transform: translateY(-50%);
+        width: 17vw;
+        height: 17vw;
+    }
+    
+}
+
+
+/* FOOTER */
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color:#1688acd4; 
+    border-top: solid 2px black;
+    margin-top: 200px;
+    padding: 50px;
+}
+
+footer img{
+    width: 150px;
+    height: 75px;
+}
+
+footer section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.explications_proj p {
+    max-width: 340px;
+    padding: 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color:black;
+}
+
+footer a:hover{
+    font-weight: 900;
+}
+
+section h3{
+    font-size: 1.2rem;
+}
+
+
+/* POUR PAGE ALL DEST */
+
+.presentation_image{
+    width: 100%;
+    height: 30vw;
+    margin-top: 10vh;
+}
+
+
+/* POUR PAGE SEARCH DEST */
+.img_presentation_search{
+    background-image: url(./img/slider_alldest/londres3.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 30vw;
+    /* padding-top: 10vh; ca fonctionne pas ca  */
+
+}
+
+.notFound {
+    margin-top: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right:auto ;
+}
+
+.notFound video{
+    margin: auto;
+}
+
+@media(max-width:1000px){
+    .notFound h1{
+        font-size: 1.1rem;
+    }
+}
