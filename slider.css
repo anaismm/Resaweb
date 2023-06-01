@@ -1,0 +1,67 @@
+.js-slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.js-photos {
+  display: flex;
+  left: -100%; /* on est cette fois-ci d'office placé à -500px (pour voir la slide réelle 1), puisque placé à 0px nous sommes sur le 1er clone */
+  position: relative;
+  transition: left 0.6s ease-out;
+}
+
+.js-photo {
+  width: 100%; /* chaque photo/slide fait également 500px pour qu'il n'y en ai qu'une seule visible à la fois */
+  height: 30vw;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.js-slider img {
+  width: 100%;
+  height: 30vw;
+  object-fit: cover;
+}
+
+.js-navigation {
+  position: absolute;
+  width: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.js-btn-decale-droite,
+.js-btn-decale-gauche {
+  position: absolute;
+  transform: translateY(75%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: beige;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.js-btn-decale-gauche {
+  left: initial;
+  right: 0;
+}
+
+.js-slider .arrow {
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  transform: rotate(-45deg);
+  position: relative;
+  left: 1px;
+}
+
+.js-btn-decale-gauche .arrow {
+  left: -1px;
+  transform: rotate(135deg);
+}

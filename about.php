@@ -62,7 +62,32 @@
         </section>
 
 
-        <script src="script.js"></script>
+        <!-- FOOTER -->
+    <footer>
+        <section class="explications_proj">
+            <img src="img/holilearnlogo_text.png" alt="">
+            <p>Holilearn est un organimse de séjours linguistiques pour les jeunes de 7 à 18 ans. De cette manière, ces derniers peuvent apprendre tout en s'amusant.</p>
+        </section>
+
+        <section class="plan_site">
+            <h3>Plan du site</h3>
+            <a href="index.php">Accueil</a>
+            <a href="destinations.php">Destinations</a>
+            <a href="about.php">À propos</a>
+            <a href="panier.php">Panier</a>
+            </div>
+        </section>
+
+        <section class="about">
+            <h3>À propos</h3>
+            <a href="about.php#concept">Le concept</a>
+            <a href="about.php#creatrice">La créatrice</a>
+            <a href="about.php#mention_legale">Mentions légales</a>
+            
+        </section>
+    </footer>
+    
+    <script src="script.js"></script>
   
 </body>
 </html>

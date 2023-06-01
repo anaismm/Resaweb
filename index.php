@@ -12,7 +12,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
 
     <title>Holilearn Accueil</title>
-</head>
+  </head>
 <body>
   <!-- A remodifier le header pour que ce soit les photos avec montexte le header et la nav bas c'ets juste les liens  -->
     
@@ -52,127 +52,54 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
 
     </section>
     
-    
-    
-    <!-- DOIS JE LAISSER VALUE 1,2,3 pour toute les choses -->
-    <!--A FAIRE LA NAVBARRE -->
-    <form action="all_dest.php" method="get"> 
-
-      <div class="field">
-       
-        <img src="img/localisation.png"  alt="">
-        
-
-          <div class="select">
-           
-          <label for="pays">Pays</label>
-            <select name="pays" id="pays">
-              <option value="">Où ?</option>
-              <option value="Angleterre">Angleterre</option>
-              <option value="Malte">Malte</option>
-              <option value="Etats-Unis">Etats-Unis</option>
-              <option value="Canada">Canada</option>
-              <option value="Australie">Australie</option>
-            </select>
-          </div>
-        
-      </div>
-
-      <div class="field field-periode">
-        
-        <img src="img/calendar.png" alt="">
-        
-          <div class="select">
-          <label for="periode">Période</label>
-          
-            <select name="vacances" id="periode">
-              <option value="">Quand ?</option>
-              <option value="vacances_de_printemps">Vacances de printemps</option>
-              <option value="vacances_ete">Vacances d'été</option>
-              <option value="vacances_toussaint">Vacances de la Toussaint</option>
-            </select>
-          </div>
-      </div>
-      <!-- je dois mettre exactement ce qu'il y a ecrit dans value dans ma base de donnée pour vacances donc je laisse les _  -->
-
-      <div class="field">
-        
-        <img src="img/utilisateurs.png"   alt="">
-       
-          <div class="select">
-          <label for="age">Âge</label>
-            <select name="age_dest" id="age">
-              <option value="">Qui ?</option>
-              <option value="7-10 ans">7-10 ans</option>
-              <option value="11-14 ans">11-14 ans</option>
-              <option value="15-18 ans">15-18 ans</option>
-            </select>
-          </div>
-      </div>
-<!-- pour l'instant field-periode est pas necessaire -->
-      <div class="field field-activite">
-        
-        <img src="img/activites.png"  alt="">
-        
-          <div class="select">
-           
-          <label for="activite">Activités</label>
-            <select name="activites" id="activite" >
-              <option class="optnull" value="">Quoi ?</option>
-              <option value="parcours sportif">Parcours sportif</option>
-              <option value="parcours artistique">Parcours artistique</option>
-              <option value="parcours découverte">Parcours découverte</option>
-            </select>
-          </div>
-      </div>
-
-      <input type="submit" class="btn-search" value="Rechercher">
-     
-
-
-    </form>
+    <?php
+    include("search_bar.php");
+   
+    ?>
   
 
     <!-- Nouveautés -->
     <main>
       <h2>Nouveautés</h2>
 
-      <div class="cardcontainer"> <!--container qui possede toutes les cartes -->
+      <div class="new">
+        <div class="cardcontainer"> <!--container qui possede toutes les cartes -->
 
-      <?php
-    foreach($result as $row){?> 
-      
-        <a href="dest.php?dest=<?=$row["id"]?>" alt="consultez le produit"> <!--essayer de mettre en php un titre unique pour que alt soit compréhensible-->
-        <div class="card"> <!--css pour une seule carte-->
-          <img src="<?=$row["drapeau_pays"]?>" class="img_drapeau_usa" alt="">
-          <div class="img_card" style="background-image:url('<?=$row["img_card"]?>')"></div> 
-          <h3><?=$row["nom_parcours"]?></h3> 
-          <div class="people">
-            <img src="img/people2.png" width="30px" alt=""> 
-            <p><?=$row["age_dest"]?></p>
-          </div>
-          <div class="calendar">
-            <img src="img/calendar2.png" width="30px" alt="">
-            <p><?=$row["periode"]?></p>
-          </div>
-          <div class="activities_logo">
-            <img src="img/activities3.png" width="30px" alt="">
-            <p><?=$row["resume_act"]?></p>
-          </div>
-          <div class="bloc_pays_et_prix">
-            <p class="pays"><?=$row["pays"]?></p>
-            <div class="bloc_prix">
-              <p>A partir de </p>
-              <p class="prix"><?=$row["prix"]?> €</p>
+        <?php
+      foreach($result as $row){?> 
+        
+          <a href="dest.php?dest=<?=$row["id"]?>" alt="consultez le produit"> <!--essayer de mettre en php un titre unique pour que alt soit compréhensible-->
+          <div class="card"> <!--css pour une seule carte-->
+            <img src="<?=$row["drapeau_pays"]?>" class="img_drapeau_usa" alt="">
+            <div class="img_card" style="background-image:url('<?=$row["img_card"]?>')"></div> 
+            <h3><?=$row["nom_parcours"]?></h3> 
+            <div class="people">
+              <img src="img/people2.png" width="30px" alt=""> 
+              <p><?=$row["age_dest"]?></p>
             </div>
-        </div>
+            <div class="calendar">
+              <img src="img/calendar2.png" width="30px" alt="">
+              <p><?=$row["periode"]?></p>
+            </div>
+            <div class="activities_logo">
+              <img src="img/activities3.png" width="30px" alt="">
+              <p><?=$row["resume_act"]?></p>
+            </div>
+            <div class="bloc_pays_et_prix">
+              <p class="pays"><?=$row["pays"]?></p>
+              <div class="bloc_prix">
+                <p>A partir de </p>
+                <p class="prix"><?=$row["prix"]?> €</p>
+              </div>
+          </div>
+
+          </div>
+          </a>
+      <?php
+      }
+      ?>
 
         </div>
-        </a>
-    <?php
-    }
-    ?>
-
       </div>
 
 
@@ -187,11 +114,11 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
           <img src="img/fldroite.png" class="btn-right" alt="photo suivante">
         </div>
         <div class="all_dest">
-            <a href="search_dest.php?pays=Etats-Unis"><div class="dest_card etats-unis"><h3>Etats-Unis</h3></div></a>
-            <a href="search_dest.php?pays=Angleterre"><div class="dest_card angleterre"><h3>Angleterre</h3></div></a>
-            <a href="search_dest.php?pays=Australie"><div class="dest_card australie"><h3>Australie</h3></div></a>
-            <a href="search_dest.php?pays=Malte"><div class="dest_card malte"><h3>Malte</h3></div></a>
-            <a href="search_dest.php?pays=Canada"><div class="dest_card canada"><h3>Canada</h3></div></a>
+            <a href="all_dest.php?pays=Etats-Unis"><div class="dest_card etats-unis"><h3>Etats-Unis</h3></div></a>
+            <a href="all_dest.php?pays=Angleterre"><div class="dest_card angleterre"><h3>Angleterre</h3></div></a>
+            <a href="all_dest.php?pays=Australie"><div class="dest_card australie"><h3>Australie</h3></div></a>
+            <a href="all_dest.php?pays=Malte"><div class="dest_card malte"><h3>Malte</h3></div></a>
+            <a href="all_dest.php?pays=Canada"><div class="dest_card canada"><h3>Canada</h3></div></a>
         </div>    
     </section>
 
@@ -256,6 +183,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
         <a href="index.php">Accueil</a>
         <a href="destinations.php">Destinations</a>
         <a href="about.php">À propos</a>
+        <a href="panier.php">Panier</a>
         </div>
       </section>
 

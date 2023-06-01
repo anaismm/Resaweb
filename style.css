@@ -138,11 +138,11 @@ nav a:hover::after {
     padding-top: 20vh;
 }
 
-h1{
+.titre h1{
     text-align: center; 
 }
 
-h1 span{
+.titre h1 span{
     font-weight: 400;
     font-size: 1.5rem; 
 }
@@ -179,33 +179,33 @@ h1 span{
 }
 
 @media(max-width:920px){
-    .h1{
+    .titre h1{
         font-size: 1.2rem;
     }
     
 }
 @media(max-width:840px){
-    h1{
+    .titre h1{
         font-size: 1.1rem;
     }
 }
 
 @media(max-width:1080px){
-    h1 span{
+    .titre h1 span{
         font-weight: 400;
         font-size: 1.3rem; 
     }
 }
 
 @media(max-width:920px){
-    h1 span{
+    .titre h1 span{
         font-weight: 400;
         font-size: 1.1rem; 
     }
 }
 
 /* SEARCH BARRE */
-form{
+.form_search_dest{
     width: 80vw;
     display: flex;
     flex-wrap: wrap;
@@ -265,7 +265,7 @@ select:not(option){
 }
 
 
-input{
+.btn-search{
     width:fit-content;
     background: linear-gradient(100.81deg, rgba(56, 238, 216, 0.84) 5.52%, rgba(33, 177, 222, 0.5964) 106.72%);
     border: none;
@@ -335,7 +335,6 @@ h2{
 }
 
 .img_card{
-    background-image: url(./img/los_angeles.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -473,11 +472,14 @@ h3{
     }
 }
 
+/* Pour que ca fasse que sur produits nouveautés */
 @media (max-width: 975px) {
-    .cardcontainer a:last-child {
+    .new .cardcontainer a:last-child {
         display: none;
     }
 }
+
+
 
 
 /* SLIDER */
@@ -808,23 +810,15 @@ section h3{
 
 /* POUR PAGE ALL DEST */
 
-.presentation_image{
+.presentation_image {
     width: 100%;
     height: 30vw;
-    margin-top: 10vh;
+    padding-top: 10vh;
+    box-sizing: content-box;
 }
 
 
-/* POUR PAGE SEARCH DEST */
-.img_presentation_search{
-    background-image: url(./img/slider_alldest/londres3.jpg);
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 30vw;
-    /* padding-top: 10vh; ca fonctionne pas ca  */
 
-}
 
 .notFound {
     margin-top: 50px;
@@ -833,12 +827,272 @@ section h3{
     margin-right:auto ;
 }
 
-.notFound video{
-    margin: auto;
+.notFound h1{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    max-width: 60vw;
 }
 
-@media(max-width:1000px){
-    .notFound h1{
+/* .notFound video{
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+.video_notFound{
+    display: flex;
+    justify-content: center;
+}
+
+.notFound h1 span{
+    font-size: 1.2rem;
+    
+}
+
+
+
+
+/* PAGE PANIER */
+.titre_panier{
+    padding-top: 15vh;
+    padding-bottom: 10vh;
+    text-align: center;
+}
+
+.panier{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+
+
+/* PRODUITS PANIER */
+.recap_dest_panier{
+    display: flex;
+    align-items: center;
+    background-color: #B2E8FA;
+    padding: 13px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+.img_recap_card{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width:15vw;
+    height: 10vw;
+    border-radius: 5px;
+}
+
+.txt_recap_panier{
+    display: flex;
+    flex-direction: column;
+}
+
+.titre2_recap{
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    font-size: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.date_panier{
+    margin-top: 3px;
+    margin-bottom: 15px;
+}
+
+.pays_dest{
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    margin: 0;
+}
+
+.pays_dest img{
+    width: 30px;
+    height:15px;
+    border-radius: 2px;
+    margin-bottom:  20px;
+}
+
+.prix_panier{
+    font-size: 1.3rem;
+}
+
+/* FORM PANIER */
+.form_panier{
+    width: fit-content;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.form_panier input:not(.btn-envoyer){
+    width: 100%;
+    height: 40px;
+    margin-bottom: 40px;
+    border: 1px solid #333;
+    border-width: 0 0 1px;
+    background-color: transparent;
+}
+
+.form_panier p{
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.form_panier span:not(.total_calcule){
+    color: red;
+}
+
+.nom_prenom{
+    display: flex;
+    gap: 40px;
+}
+
+.nom_prenom input{
+    width: 80%;
+}
+
+.form_panier input[type="number"]{
+    width: 10%;
+}
+
+.quantite{
+    background-color: #B2E8FA;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.quantite_bouton{
+    display: inline;
+    margin-left: 10px;
+}
+
+.prix_total p{
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.prix_bloc{
+    display: flex;
+}
+
+.total_calcule{
+    color: black;
+    font-weight: bold;
+}
+
+.btn_envoyer_panier{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-envoyer{
+    width:fit-content;
+    background: linear-gradient(100.81deg, rgba(56, 238, 216, 0.84) 5.52%, rgba(33, 177, 222, 0.5964) 106.72%);
+    border: none;
+    border-radius: 5px;
+    padding: 0 50px;
+    margin: auto;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    height: 50px;
+}
+
+.btn-envoyer:hover{
+    background: linear-gradient(204deg, rgba(33,177,222,1) 49%, rgba(71,116,237,1) 77%);
+}
+
+/* SUPPRESION DU PANIER */
+.suppr_panier{
+    text-decoration: none;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+
+}
+
+.suppr_panier:hover{
+    color: black;
+    transition: all 0.5s ease-in-out;
+    font-size: 1.5rem; 
+    text-decoration: underline;
+}
+
+@media(max-width:1060px){
+    .panier{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media(max-width:1020px){
+    .titre2_recap{
+        font-size: 0.8rem;
+    }
+
+    .suppr_panier{
         font-size: 1.1rem;
     }
+
+    .suppr_panier:hover{
+        font-size: 1.3rem; 
+    }
+}
+
+@media(max-width:960px){
+    .panier{
+        display: block;
+    }
+
+    .recap_dest_panier{
+        margin: auto;
+        max-width: 70vw;
+        margin-bottom: 20px;
+    }
+
+    .titre2_recap{
+        font-size: 1.1rem;
+        margin-left: 20px;
+    }
+
+    .img_recap_card{
+        width:25vw;
+        height: 15vw;
+    }
+
+    .suppr_panier{
+        font-size: 1.2rem;
+        margin-left: 100px;
+    }
+
+    .form_panier{
+        margin: auto;
+        margin-top: 70px;
+    }
+    
+    .nom_prenom input{
+        width: 40%;
+    }
+}
+
+
+/* PAGE COFIRMATION */
+.titre_confirm{
+    text-align: center;
 }

@@ -52,11 +52,11 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
 
         <div class="txt_container">
             <div class="pays_dest">
-                <h3><?=$result[0]["pays"]?></h3>
+                <h2><?=$result[0]["pays"]?></h2>
                 <img src="<?=$result[0]["drapeau_pays"]?>" alt="">
             </div>
-            <h3><?=$result[0]["age_dest"]?> </h3>
-            <h3><?=$result[0]["periode"]?></h3>
+            <h2><?=$result[0]["age_dest"]?> </h2>
+            <h2><?=$result[0]["periode"]?></h2>
             <p class="descriptif_dest"><?=$result[0]["descriptif_dest"]?></p>
             <div class="prix_dest">
                 <p><?=$result[0]["prix"]?> €</p>
@@ -138,6 +138,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
           <a href="index.php">Accueil</a>
           <a href="destinations.php">Destinations</a>
           <a href="about.php">À propos</a>
+          <a href="panier.php">Panier</a>
           </div>
         </section>
   
@@ -151,6 +152,6 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
       </footer>
     
 
-        <script src="script2.js"></script>
+        <script src="scriptdest.js"></script>
 </body>
 </html>

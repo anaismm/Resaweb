@@ -8,15 +8,19 @@ $compoRequete = "";
 if (!empty($_GET)) {
     foreach ($_GET as $param => $value) {
         if (!empty($value)) {
-          $compoRequete .= " AND $param LIKE '$value'";
+            $compoRequete .= " AND $param LIKE '$value'";
         }
     }
-    $compoRequete = substr_replace($compoRequete, " WHERE", 0, 4);
+    if ($compoRequete != "") {
+        $compoRequete = substr_replace($compoRequete, " WHERE", 0, 4);
+    }
     $requete .= $compoRequete;
 }
 
 $stmt=$db->query($requete);
 $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
+
+
 
 // die(var_dump($result));
 ?>
@@ -29,6 +33,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="img/holilearn_logo.png">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="slider.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
@@ -39,85 +44,61 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
     <?php include("navbar.php") ?>
 
 <!-- SLIDER DES DESTINATIONS -->
-    <img src="img/slider_alldest/australie2.jpg" class="presentation_image" alt="">
+    <!-- <img src="img/slider_alldest/australie2.jpg" class="presentation_image" alt=""> -->
+    <div class="js-slider presentation_image">
+        <div class="js-photos">
+            <!-- CLONE PRÉSENT AU DÉBUT DU SLIDER, VISUELLEMENT IDENTIQUE À LA SLIDE RÉELLE 3 -->
+            <div class="js-photo clone">
+                <img src="img/slider_alldest/londres3.jpg" alt="">
+            </div>
+
+            <!-- LES 3 SLIDES RÉELLES -->
+            <div class="js-photo reel-slide">
+                <img src="img/slider_alldest/la_slider.jpg" alt="">
+            </div>
+
+            <div class="js-photo reel-slide">
+                <img src="img/slider_alldest/canada2.jpg" alt="">
+            </div>
+
+            <div class="js-photo reel-slide">
+                <img src="img/slider_alldest/australie2.jpg" alt="">
+            </div>
+
+            <div class="js-photo reel-slide">
+                <img src="img/slider_alldest/malte2.jpg" alt="">
+            </div>
+
+            <div class="js-photo reel-slide">
+                <img src="img/slider_alldest/londres3.jpg" alt="">
+            </div>
+
+            <!-- CLONE PRÉSENT À LA FIN DU SLIDER, VISUELLEMENT IDENTIQUE À LA SLIDE RÉELLE 1 -->
+            <div class="js-photo clone">
+                <img src="img/slider_alldest/la_slider.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="js-navigation">
+            <button class="js-btn-decale-droite">
+                <span class="arrow"></span>
+            </button>
+            <button class="js-btn-decale-gauche">
+                <span class="arrow"></span>
+            </button>
+        </div>
+    </div>
      
 
 <!-- SEARCH BAR -->
-    <form action="all_dest.php" method="get"> 
-
-      <div class="field">
-        <img src="img/localisation.png"  alt="">
-        
-          <div class="select">
-           
-          <label for="pays">Pays</label>
-            <select name="pays" id="pays">
-              <option value="">Où ?</option>
-              <option value="Angleterre">Angleterre</option>
-              <option value="Malte">Malte</option>
-              <option value="Etats-Unis">Etats-Unis</option>
-              <option value="Canada">Canada</option>
-              <option value="Australie">Australie</option>
-            </select>
-          </div> 
-      </div>
-
-      <div class="field field-periode">
-        <img src="img/calendar.png" alt="">
-        
-          <div class="select">
-          <label for="periode">Période</label>
-          
-            <select name="vacances" id="periode">
-              <option value="">Quand ?</option>
-              <option value="vacances_de_printemps">Vacances de printemps</option>
-              <option value="vacances_ete">Vacances d'été</option>
-              <option value="vacances_toussaint">Vacances de la Toussaint</option>
-            </select>
-          </div>
-      </div>
-      <!-- je dois mettre exactement ce qu'il y a ecrit dans value dans ma base de donnée pour vacances donc je laisse les _  -->
-
-      <div class="field">
-        
-        <img src="img/utilisateurs.png"   alt="">
-       
-          <div class="select">
-          <label for="age">Âge</label>
-            <select name="age_dest" id="age">
-              <option value="">Qui ?</option>
-              <option value="7-10 ans">7-10 ans</option>
-              <option value="11-14 ans">11-14 ans</option>
-              <option value="15-18 ans">15-18 ans</option>
-            </select>
-          </div>
-      </div>
-<!-- pour l'instant field-periode est pas necessaire -->
-      <div class="field field-activite">
-        
-        <img src="img/activites.png"  alt="">
-        
-          <div class="select">
-           
-          <label for="activite">Activités</label>
-            <select name="activites" id="activite" >
-              <option class="optnull" value="">Quoi ?</option>
-              <option value="parcours sportif">Parcours sportif</option>
-              <option value="parcours artistique">Parcours artistique</option>
-              <option value="parcours découverte">Parcours découverte</option>
-            </select>
-          </div>
-      </div>
-
-      <input type="submit" class="btn-search" value="Rechercher">
-
-    </form>
-
-    <?php
+    
+  <?php
+    include("search_bar.php");
+   
     if (empty($result)) {
-        include('template/non_trouve.html');
+        include('non_trouve.html');
     }
-    ?>
+  ?>
 
     <!-- MES CARTES VOYAGES -->
   
@@ -170,6 +151,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
         <a href="index.php">Accueil</a>
         <a href="destinations.php">Destinations</a>
         <a href="about.php">À propos</a>
+        <a href="panier.php">Panier</a>
         </div>
       </section>
 
@@ -187,6 +169,6 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
 
 
     <script src="script.js"></script>
-    <!-- <script src="slider.js"></script> -->
+    <script src="slider.js"></script>
 </body>
 </html>

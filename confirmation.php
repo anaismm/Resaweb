@@ -2,6 +2,22 @@
 include("connexion.php");
 session_start();
 
+// impossible d'acceder a la page confirmation si la personne n'a rien dans son panier et soumet le formulaire
+if (!isset($_SESSION["id_dest"])) {
+    if (empty($_SESSION["id_dest"])) { // on fait test empty car variable peut exister mais etre vide
+        header('Location: panier.php'); // redirection vers panier 
+        exit(); // arrete execution de php
+    }
+}
+
+// pour tester si on récupère bien au moins l'email de l'utilisateur en post et sinon on redirige vers le panier
+if (!isset($_POST["email"])) {
+    if (empty($_POST["email"])) {
+        header('Location: panier.php');
+        exit();
+    }
+}
+
 function generer_code_resa($length = 5) {
     $char = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $code_resa = '';
@@ -12,6 +28,8 @@ function generer_code_resa($length = 5) {
     return $code_resa;
 }
 
+
+// on s'assure que le code resa n'ets pas déjà dans la base de donnée c'ets pk on initialise et qu'on dit qu'il existe au moins une fois et le while pourra démarrer. Il s'arretera jsuqu'a ce qu'il trouve un code qui n'xiste pas dans la BDD
 $result = 1;
 
 while ($result != 0) {
@@ -22,18 +40,24 @@ while ($result != 0) {
     $result = $stmt->fetchColumn();
 }
 
+
 // echo var_dump($_POST);
 // echo var_dump($_SESSION);
 // echo $code_resa;
-
 // die(implode(",", $_POST));
+
+
 $infos_post = implode("','", $_POST);
 
+
 // Données ajouter a ma table reservation 
+
 $requete="INSERT INTO reservation (nb_voyageurs, mail, nom, prenom, tel, code_resa)
 VALUES ('$infos_post', '$code_resa')"; // les valeurs nb_voyauers etc sont celles presentes dans ma base de donne et non celle du formulaire + attention de ne pas oublier les guillemets que j'ai rajouté dans mon implode car les valeurs values doivent etre entouré de guillemets
 $stmt=$db->query($requete); //execute la requete 
-$idGenere = $db->lastInsertId(); // lastInsertId permet de recuperer le dernier id genere dans ma ttbale reservation pour ensuite l'inserer dans ma table rel_resa_dest
+$idGenere = $db->lastInsertId(); // lastInsertId permet de recuperer le dernier id genere en autoincrement dans ma tbale reservation pour ensuite l'inserer dans ma table rel_resa_dest
+
+
 
 $infos_session = "";
 
@@ -41,38 +65,112 @@ foreach ($_SESSION["id_dest"] as $dest) {
     $infos_session .= "($idGenere, $dest),";
 }
 
-$infos_session = substr($infos_session, 0, -1) . ";";
+$infos_session = substr($infos_session, 0, -1) . ";"; // notre derniere virgule nous derange, ce code sert donc a remplacer la dernière virgule par un point virgule
+
 
 // Données ajouter a ma table rel_resa_dest
 $requete="INSERT INTO rel_resa_dest (id_reservation, id_destination)
 VALUES $infos_session";
-$stmt=$db->query($requete);
+$stmt=$db->query($requete); // pour executer notre requete
 
-$message = "Bonjour {$_SESSION["prenom"]} {$_SESSION["nom"]},<br>votre réservation $code_resa est confirmée.";
 
-$headers = 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+////////////CALCUL DU PRIX/////////////
+        $requete="SELECT dest.prix, resa.nb_voyageurs FROM destination dest, reservation resa, rel_resa_dest rel
+        WHERE dest.id=rel.id_destination AND resa.id=rel.id_reservation AND resa.id=$idGenere";
+        $stmt=$db->query($requete);
+        $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
+        
+        $total = 0;
+        
+        foreach ($result as $dest) {
+            $total += $dest["prix"] * $dest["nb_voyageurs"];
+        }
+/////////////////////////
+
+
+
+// MAIL 
+$message = "Bonjour {$_POST["prenom"]} {$_POST["nom"]},<br>votre réservation $code_resa est confirmée."; // ca contient le corps de mon mail donc c'est ici que je mettrai le nom de la reservation et son prix .
+
+$headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n" . 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
 mail(
-    $mail,
+    $_POST["email"],
     "Confirmation de votre réservation",
     $message,
     $headers
 );
+
+
+// On ajoute pas deux fois la reservation dans la BDD, ce code permet de suprrimer la session
+$_SESSION = array();
+
+    if( ini_get( "session.use_cookies" ) ) { 
+        $params = session_get_cookie_params();
+    
+        setcookie(
+          session_name()
+          , ''
+          , time() - 42000
+          , $params[ "path"     ]
+          , $params[ "domain"   ]
+          , $params[ "secure"   ]
+          , $params[ "httponly" ]
+        );
+    }
+    
+    if( session_status() === PHP_SESSION_ACTIVE ) { session_destroy(); }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/holilearn_logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
     <title>confirmation</title>
 </head>
 <body>
 
     <?php include("navbar.php") ?>
-    <h1>Votre réservation a bien été enregsitré.</h1>
-    <h2>Vous recevrez un mail confirmant votre réservation</h2>
+    <h1 class="titre_confirm">Votre réservation a bien été enregsitrée ! <br>
+    Vous recevrez un mail confirmant votre réservation.
+    </h1>
+    
 
+    <p><?= $total ?> € </p>
+
+    <!-- FOOTER -->
+    <footer>
+      <section class="explications_proj">
+        <img src="img/holilearnlogo_text.png" alt="">
+        <p>Holilearn est un organimse de séjours linguistiques pour les jeunes de 7 à 18 ans. De cette manière, ces derniers peuvent apprendre tout en s'amusant.</p>
+      </section>
+
+      <section class="plan_site">
+        <h3>Plan du site</h3>
+        <a href="index.php">Accueil</a>
+        <a href="destinations.php">Destinations</a>
+        <a href="about.php">À propos</a>
+        <a href="panier.php">Panier</a>
+        </div>
+      </section>
+
+      <section class="about">
+        <h3>À propos</h3>
+        <a href="about.php#concept">Le concept</a>
+        <a href="about.php#creatrice">La créatrice</a>
+        <a href="about.php#mention_legale">Mentions légales</a>
+        
+      </section>
+    </footer>
+
+    <script src="script.js"></script>
     
     
 </body>

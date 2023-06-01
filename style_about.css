@@ -254,3 +254,42 @@ nav a:hover::after {
         width: 30vw;
     }
 }
+
+
+/* FOOTER */
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color:#1688acd4; 
+    border-top: solid 2px black;
+    margin-top: 200px;
+    padding: 50px;
+}
+
+footer img{
+    width: 150px;
+    height: 75px;
+}
+
+footer section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.explications_proj p {
+    max-width: 340px;
+    padding: 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color:black;
+}
+
+footer a:hover{
+    font-weight: 900;
+}
+
+section h3{
+    font-size: 1.2rem;
+}
