@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-
+  // code de correction de Melina Guyon
   // on crée et initialise les varibales les variables
   var photosContainer = document.querySelector('.js-photos');
   var sliderGlobalContainer =  document.querySelector('.js-slider');

@@ -79,12 +79,15 @@ $stmt=$db->query($requete); // pour executer notre requete
         WHERE dest.id=rel.id_destination AND resa.id=rel.id_reservation AND resa.id=$idGenere";
         $stmt=$db->query($requete);
         $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
-        
+
         $total = 0;
         
         foreach ($result as $dest) {
             $total += $dest["prix"] * $dest["nb_voyageurs"];
         }
+        // ca ne s'applique pas car je reste toujours à 0
+
+    
 /////////////////////////
 
 
@@ -138,9 +141,20 @@ $_SESSION = array();
 <body>
 
     <?php include("navbar.php") ?>
-    <h1 class="titre_confirm">Votre réservation a bien été enregsitrée ! <br>
-    Vous recevrez un mail confirmant votre réservation.
-    </h1>
+
+    <div class="bouton_retour">
+        <a href="index.php" class=btn_retour_accueil>Retour à l'accueil</a>
+    </div>
+    
+    
+    <h1 class="titre_confirm">Votre réservation a bien été enregistrée ! <br>
+    Un mail de confirmation vient de vous être envoyé !</h1> 
+    
+    <div class="video_validation">
+        <video autoplay muted>
+            <source src="avion.mp4" type="video/mp4">
+        </video>
+    </div>
     
 
     <p><?= $total ?> € </p>

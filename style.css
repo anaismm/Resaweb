@@ -1008,6 +1008,7 @@ section h3{
     font-weight: bold;
     cursor: pointer;
     height: 50px;
+    color: black;
 }
 
 .btn-envoyer:hover{
@@ -1092,7 +1093,44 @@ section h3{
 }
 
 
-/* PAGE COFIRMATION */
+/* PAGE CONFIRMATION */
 .titre_confirm{
     text-align: center;
+    padding-top: 10vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+    line-height: 2rem;
+}
+
+.bouton_retour{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.bouton_retour a{
+    text-decoration: none;
+    color: black;
+    background-color:#1688acd4 ;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: 40px;
+    font-size: 1.1rem;
+    margin-top: 16vh;
+}
+
+.bouton_retour a:hover{
+    background-color: #B2E8FA;
+    transition: all 0.5s ease-in-out;
+    transform: scale(1.1);
+}
+
+.video_validation{
+    display: flex;
+    justify-content: center;
+}
+
+.prix_confimration{
+    margin: auto;
 }

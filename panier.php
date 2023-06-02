@@ -31,7 +31,7 @@ if (isset($_SESSION["id_dest"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
-    <title>Formulaire</title>
+    <title>Mon Panier</title>
 </head>
 <body>
 
@@ -69,7 +69,19 @@ if (isset($_SESSION["id_dest"])) {
                 endif;
             ?>
             
-            <a href="abort.php" class="suppr_panier" >Vider le panier</a>
+            <?php
+                if (isset($_SESSION["id_dest"])):
+                    if (count($_SESSION["id_dest"]) != 0):
+            ?>
+                <a href="abort.php" class="suppr_panier" >Vider le panier</a>
+            <?php
+                    // else:
+                    //     echo "<p style='color: red;'>Vous n'avez pas ajouté de destinations à votre panier.</p>";
+                    endif;
+                // else:
+                //     echo "<p style='color: red;'>Vous n'avez pas ajouté de destinations à votre panier.</p>";
+                endif;
+            ?>
            
             
             <!-- </ul> -->
@@ -82,19 +94,19 @@ if (isset($_SESSION["id_dest"])) {
                 <div class="nom_prenom">
                     <div class="nom">
                         <label for="nom">Nom <span>*</span> :</label>
-                        <input type="text" id="nom" name="nom" required><br>
+                        <input type="text" id="nom" name="nom" onKeyUp="normaliseNom(this)" required><br>
                     </div>
 
                     <div class="prenom">
                         <label for="prenom">Prénom <span>*</span> :</label>
-                        <input type="text" id="prenom" name="prenom" required><br>
+                        <input type="text" id="prenom" name="prenom" onKeyUp="normalisePrenomCompose(this)" required><br>
                     </div>
                 </div>
 
                 <label for="email">Email <span>*</span> :</label>
                 <input type="email" id="email" name="email" required><br>
 
-                <label for="telephone">Numéro de téléphone (ex. 0612345678) <span>*</span> :</label>
+                <label for="telephone">Numéro de téléphone (ex: 0612345678) <span>*</span> :</label>
                 <input type="tel" id="telephone" name="telephone" pattern="[0-9]{10}" required><br>
 
                 <label for="nombre_voyageurs">Nombre de voyageurs (entre 1 et 5) <span>*</span> :</label>
@@ -110,7 +122,7 @@ if (isset($_SESSION["id_dest"])) {
                 
 
                 <div class="btn_envoyer_panier">
-                    <input type="submit" class="btn-envoyer" value="Envoyer">
+                    <input type="submit" class="btn-envoyer" value="Envoyer" >
                 </div>
 
                 
@@ -145,6 +157,7 @@ if (isset($_SESSION["id_dest"])) {
 
     <script src="script.js"></script>
     <script src="prix.js"></script>
+    <script src="traitement_caractere.js"></script>
 
 </body>
 </html>

@@ -31,7 +31,7 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
-    <title>Holilearn Parcours LA</title>
+    <title>Holilearn <?=$result[0]["nom_parcours"]?></title>
 </head>
 
 <body>
