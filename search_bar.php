@@ -1,4 +1,4 @@
-<form action="all_dest.php" class="form_search_dest" method="get"> 
+<form id="contenu" action="all_dest.php" class="form_search_dest" method="get"> 
 
       <div class="field">
        
@@ -11,10 +11,10 @@
             <select name="pays" id="pays">
               <option value="">Où ?</option>
               <option value="Angleterre">Angleterre</option>
-              <option value="Malte">Malte</option>
-              <option value="Etats-Unis">Etats-Unis</option>
-              <option value="Canada">Canada</option>
               <option value="Australie">Australie</option>
+              <option value="Canada">Canada</option>
+              <option value="Etats-Unis">Etats-Unis</option>
+              <option value="Malte">Malte</option>
             </select>
           </div>
         
@@ -61,9 +61,9 @@
           <label for="activite">Activités</label>
             <select name="type_parcours" id="activite" >
               <option class="optnull" value="">Quoi ?</option>
-              <option value="parcours_sportif">Parcours sportif</option>
               <option value="parcours_artistique">Parcours artistique</option>
               <option value="parcours_decouverte">Parcours découverte</option>
+              <option value="parcours_sportif">Parcours sportif</option>
             </select>
           </div>
       </div>

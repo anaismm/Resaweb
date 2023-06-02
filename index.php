@@ -114,16 +114,16 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
           <img src="img/fldroite.png" class="btn-right" alt="photo suivante">
         </div>
         <div class="all_dest">
-            <a href="all_dest.php?pays=Etats-Unis"><div class="dest_card etats-unis"><h3>Etats-Unis</h3></div></a>
-            <a href="all_dest.php?pays=Angleterre"><div class="dest_card angleterre"><h3>Angleterre</h3></div></a>
-            <a href="all_dest.php?pays=Australie"><div class="dest_card australie"><h3>Australie</h3></div></a>
-            <a href="all_dest.php?pays=Malte"><div class="dest_card malte"><h3>Malte</h3></div></a>
-            <a href="all_dest.php?pays=Canada"><div class="dest_card canada"><h3>Canada</h3></div></a>
+            <a href="all_dest.php?pays=Etats-Unis"><span class=sr-only>Réservez un séjour aux Etats-Unis</span><div class="dest_card etats-unis"><h3>Etats-Unis</h3></div></a>
+            <a href="all_dest.php?pays=Angleterre"><span class=sr-only>Réservez un séjour en Angleterre</span><div class="dest_card angleterre"><h3>Angleterre</h3></div></a>
+            <a href="all_dest.php?pays=Australie"><span class=sr-only>Réservez un séjour en Australie</span><div class="dest_card australie"><h3>Australie</h3></div></a>
+            <a href="all_dest.php?pays=Malte"><span class=sr-only>Réservez un séjour à Malte</span><div class="dest_card malte"><h3>Malte</h3></div></a>
+            <a href="all_dest.php?pays=Canada"><span class=sr-only>Réservez un séjour au Canada</span><div class="dest_card canada"><h3>Canada</h3></div></a>
         </div>    
     </section>
 
       <hr>
-      <h4>Un séjour associant des cours d’anglais et des activités, la recette pour mieux progresser ! </h4>
+      <h3 class="titre_acti_cours">Un séjour associant des cours d’anglais et des activités, la recette pour mieux progresser ! </h4>
 
       <!-- BLOC COURS ET ACTIVITES -->
       <div class="cours_et_act">

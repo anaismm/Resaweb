@@ -1,5 +1,6 @@
 <nav class="">
-<a  class="logo" href="index.php"><img src="img/holilearnlogo_text.png"alt="Accueil"></a>
+<a href="#contenu" class="skip-link">Aller au contenu</a>
+<a  class="logo" href="index.php"><img src="img/holilearnlogo_text.png" alt="Accueil"></a>
 
     <ul>
     <li><a href="index.php">Accueil</a></li>

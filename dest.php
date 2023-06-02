@@ -31,14 +31,14 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
-    <title>Holilearn <?=$result[0]["nom_parcours"]?></title>
+    <title>HoliLearn <?=$result[0]["nom_parcours"]?></title>
 </head>
 
 <body>
 
     <?php include("navbar.php") ?>
 
-    <h1><?=$result[0]["nom_parcours"]?></h1>
+    <h1 id="contenu"><?=$result[0]["nom_parcours"]?></h1>
     <div class="dest_container">
         <div class="img_container">
             <div class="grd_img grande"style="background-image:url('<?=$result[0]["image1"]?>')"></div>

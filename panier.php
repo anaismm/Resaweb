@@ -37,7 +37,7 @@ if (isset($_SESSION["id_dest"])) {
 
     <?php include("navbar.php") ?>
 
-    <h1 class="titre_panier">Mon Panier</h1>
+    <h1 id="contenu" class="titre_panier">Mon Panier</h1>
     <section class="panier">
         
 
@@ -88,7 +88,7 @@ if (isset($_SESSION["id_dest"])) {
         </div>
 
         
-        <div class="form_panier">
+        <div  class="form_panier">
             <form action="confirmation.php" method="post"> <!-- transferer données en post cad qu'on els verra pas dans l'url -->
                 <p>Tous les champs sont obligatoires <span>*</span></p> <br>
                 <div class="nom_prenom">

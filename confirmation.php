@@ -93,8 +93,19 @@ $stmt=$db->query($requete); // pour executer notre requete
 
 
 // MAIL 
-$message = "Bonjour {$_POST["prenom"]} {$_POST["nom"]},<br>votre réservation $code_resa est confirmée."; // ca contient le corps de mon mail donc c'est ici que je mettrai le nom de la reservation et son prix .
+// $message = "Bonjour {$_POST["prenom"]} {$_POST["nom"]},<br>votre réservation $code_resa est confirmée."; // ca contient le corps de mon mail donc c'est ici que je mettrai le nom de la reservation et son prix .
+$message = "<html>
+    <head>
+    <title>Confirmation de réservation</title>
+    </head>
+    <body>
+    <h1>Bonjour {$_POST["prenom"]} {$_POST["nom"]},</h1>
+    <p>Votre réservation a bien été enregsitrée.</p>
+    <p>Voici votre code de réservation : $code_resa.</p>
+    </body>
+    </html>";
 
+$headers = "MIME-Version: 1.0" . "\r\n";
 $headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n" . 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 
 mail(
@@ -103,6 +114,16 @@ mail(
     $message,
     $headers
 );
+
+
+// Envoi de l'e-mail
+// le probleme c'est que ca s'affiche et c'est moche ou ca s'affiche 
+    // if (mail($_POST["email"],  "Confirmation de votre réservation", $message, $headers)) {
+    //     echo "L'e-mail a été envoyé avec succès.";
+    // } else {
+    //     echo "Une erreur s'est produite lors de l'envoi de l'e-mail.";
+    // }
+
 
 
 // On ajoute pas deux fois la reservation dans la BDD, ce code permet de suprrimer la session
@@ -157,7 +178,7 @@ $_SESSION = array();
     </div>
     
 
-    <p><?= $total ?> € </p>
+    <!-- <p><?= $total ?> € </p> -->
 
     <!-- FOOTER -->
     <footer>

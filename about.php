@@ -24,7 +24,7 @@
             <div class="line"></div>
         </div>
 
-        <section class="concept">
+        <section id="contenu" class="concept">
             <div class="img_concept"></div>
             <div class="txt_concept">
                 <p><span>HoliLearn</span> est un organisme de séjours linguistiques pour les jeunes de 7 à 18 ans. En effet, aujourd’hui l’anglais est la langue officielle dans le monde. Il est donc très important de savoir la comprendre et de s’exprimer en anglais tant d’un point de vue personnel que professionnel.<br><br>
