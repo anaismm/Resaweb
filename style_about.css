@@ -286,6 +286,42 @@ nav a:hover::after {
 }
 
 
+/* BLOC MENTIONS LEGALES */
+.mentions_legales{
+    display: flex;
+    justify-content: center;
+}
+
+.ml{
+    max-width: 1000px;
+    background-color:#1688acd4 ;
+    border-radius: 10px;
+    margin-right: 40px;
+    margin-left: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.bloc_info{
+    margin-left: 40px;
+    margin-right: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.bloc_info h2{
+    padding-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+/* @media(max-width:) */
+
+
+
+
+
 /* FOOTER */
 footer{
     display: flex;

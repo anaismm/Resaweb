@@ -99,7 +99,7 @@ $message = "<html>
     <title>Confirmation de réservation</title>
     </head>
     <body>
-    <h1>Bonjour {$_POST["prenom"]} {$_POST["nom"]},</h1>
+    <p>Bonjour {$_POST["prenom"]} {$_POST["nom"]},</p>
     <p>Votre réservation a bien été enregsitrée.</p>
     <p>Voici votre code de réservation : $code_resa.</p>
     </body>

@@ -2,7 +2,7 @@
 // on veut vider la variable $_SESSION pour que y ait plus rien dns le panier
     $_SESSION = array();
 
-    if( ini_get( "session.use_cookies" ) ) { //on va voir si session.use_cookies a ete initialise, cad si la session utilise des cookies
+    if( ini_get( "session.use_cookies" ) ) { //on va voir si session.use_cookies a ete initialisé, cad si la session utilise des cookies
         $params = session_get_cookie_params();
     
         // on remplace l'anicen cookie de session par un nouveau avec unde duree négative cad que le cookie sera supprimé

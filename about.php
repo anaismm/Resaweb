@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
-    <title>A propos</title>
+    <title>HoliLearn À propos</title>
 </head>
 <body>
     
@@ -20,7 +20,7 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h2 class="titre_concept">Le concept</h2>
+            <h1 class="titre_concept">Le concept</h1>
             <div class="line"></div>
         </div>
 
@@ -40,7 +40,7 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h2 class="titre_concept">La créatrice</h2>
+            <h1 class="titre_concept">La créatrice</h1>
             <div class="line"></div>
         </div>
 
@@ -53,11 +53,39 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h2 class="titre_concept">Mentions légales</h2>
+            <h1 class="titre_concept">Mentions légales</h1>
             <div class="line"></div>
         </div>
 
         <section class="mentions_legales">
+            <div class="ml">
+                <div class="bloc_info">
+                    <h2>Créatrice</h2>
+                    <p>Anaïs MICHEL</p>
+                    <p>Mail : anais.michel2004@gmail.com</p>
+                </div>
+
+                <div class="bloc_info">
+                    <h2>Propiétés intelectuelles</h2>
+                    <p>Les images proviennent de banques d’images tel que Unsplash et Pexel. Les icones proviennent quant à elles de Flaticon.</p>
+                </div>
+
+                <div class="bloc_info">
+                    <h2>Hébergeur</h2>
+                    <p>o2switch</p>
+                    <p>222-224 Boulevard Gustave Flaubert</p>
+                    <p>63000 Clermond-Ferrand</p>
+                    <p>Siret 510 909 80700024</p>
+                </div>
+
+                <div class="bloc_info">
+                    <h2>Politique de gestion des données personnelles</h2>
+                    <p>Lorsque un client passe une commande, le prénom, le nom et l’adresse e-mail qu’il indique dans le formulaire sont collectés. La collecte de ces données est donc obligatoire dans le cas d’une commande.</p>
+                    <p>Ces données sont collectées dans l’objectif de permettre à HoliLearn d’envoyer le mail de confirmation.</p>
+                    <p>La responsable du traitement des données ainsi que le destinataire des données est : Anaïs MICHEL joignable à l’adresse anais.michel2004@gmail.com</p>
+                </div>
+            </div>
+            
 
         </section>
 
