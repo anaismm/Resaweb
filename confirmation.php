@@ -89,6 +89,24 @@ $stmt=$db->query($requete); // pour executer notre requete
 /////////////////////////
 
 
+////////////RECUPERER NOM DES VOYAGES/////////////
+$nom_dest="";
+
+$requete="SELECT dest.nom_parcours FROM destination dest, reservation resa, rel_resa_dest rel
+WHERE dest.id=rel.id_destination AND resa.id=rel.id_reservation AND resa.id=$idGenere";
+$stmt = $db->query($requete);
+$result = $stmt-> fetchall(PDO::FETCH_ASSOC);
+
+foreach ($result as $dest) {
+    $nom_dest.=$dest["nom_parcours"]." "."et"." ";
+} 
+$name_dest = substr($nom_dest, 0, -2);
+
+// echo ($name_dest);
+
+
+
+
 
 // MAIL 
 $message = "<html>
@@ -97,7 +115,7 @@ $message = "<html>
     </head>
     <body>
     <p>Bonjour {$_POST["prenom"]} {$_POST["nom"]},</p>
-    <p>Votre réservation de {$total} a bien été enregsitrée.</p>
+    <p>Votre réservation de {$total} € pour le {$name_dest} a bien été enregsitrée.</p>
     <p>Voici votre code de réservation : $code_resa.</p>
     </body>
     </html>";
