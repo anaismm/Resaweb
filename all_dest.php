@@ -81,10 +81,11 @@ $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
 
         <div class="js-navigation">
             <button class="js-btn-decale-droite">
-                <span class="arrow"></span>
+                <span class="arrow">  <span class='sr-only'>Image suivante</span> </span>
             </button>
+            
             <button class="js-btn-decale-gauche">
-                <span class="arrow"></span>
+                <span class="arrow">  <span class='sr-only'>Image précédente</span></span>
             </button>
         </div>
     </div>

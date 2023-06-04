@@ -52,8 +52,8 @@ $infos_post = implode("','", $_POST);
 
 // Données ajouter a ma table reservation 
 
-$requete="INSERT INTO reservation (nb_voyageurs, mail, nom, prenom, tel, code_resa)
-VALUES ('$infos_post', '$code_resa')"; // les valeurs nb_voyauers etc sont celles presentes dans ma base de donne et non celle du formulaire + attention de ne pas oublier les guillemets que j'ai rajouté dans mon implode car les valeurs values doivent etre entouré de guillemets
+$requete="INSERT INTO reservation (nom, prenom, mail, tel, nb_voyageurs, code_resa)
+VALUES ('$infos_post', '$code_resa')"; // les valeurs nb_voyaguers etc sont celles presentes dans ma base de donne et non celle du formulaire + attention de ne pas oublier les guillemets que j'ai rajouté dans mon implode car les valeurs values doivent etre entouré de guillemets
 $stmt=$db->query($requete); //execute la requete 
 $idGenere = $db->lastInsertId(); // lastInsertId permet de recuperer le dernier id genere en autoincrement dans ma tbale reservation pour ensuite l'inserer dans ma table rel_resa_dest
 
@@ -75,54 +75,35 @@ $stmt=$db->query($requete); // pour executer notre requete
 
 
 ////////////CALCUL DU PRIX/////////////
+        $total = 0;
+
         $requete="SELECT dest.prix, resa.nb_voyageurs FROM destination dest, reservation resa, rel_resa_dest rel
         WHERE dest.id=rel.id_destination AND resa.id=rel.id_reservation AND resa.id=$idGenere";
-        $stmt=$db->query($requete);
-        $result=$stmt-> fetchall(PDO::FETCH_ASSOC);
+        $stmt = $db->query($requete);
+        $result = $stmt-> fetchall(PDO::FETCH_ASSOC);
 
-        $total = 0;
-        
         foreach ($result as $dest) {
             $total += $dest["prix"] * $dest["nb_voyageurs"];
         }
-        // ca ne s'applique pas car je reste toujours à 0
-
     
 /////////////////////////
 
 
 
 // MAIL 
-// $message = "Bonjour {$_POST["prenom"]} {$_POST["nom"]},<br>votre réservation $code_resa est confirmée."; // ca contient le corps de mon mail donc c'est ici que je mettrai le nom de la reservation et son prix .
 $message = "<html>
     <head>
     <title>Confirmation de réservation</title>
     </head>
     <body>
     <p>Bonjour {$_POST["prenom"]} {$_POST["nom"]},</p>
-    <p>Votre réservation a bien été enregsitrée.</p>
+    <p>Votre réservation de {$total} a bien été enregsitrée.</p>
     <p>Voici votre code de réservation : $code_resa.</p>
     </body>
     </html>";
 
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n" . 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-
-mail(
-    $_POST["email"],
-    "Confirmation de votre réservation",
-    $message,
-    $headers
-);
-
-
-// Envoi de l'e-mail
-// le probleme c'est que ca s'affiche et c'est moche ou ca s'affiche 
-    // if (mail($_POST["email"],  "Confirmation de votre réservation", $message, $headers)) {
-    //     echo "L'e-mail a été envoyé avec succès.";
-    // } else {
-    //     echo "Une erreur s'est produite lors de l'envoi de l'e-mail.";
-    // }
 
 
 
@@ -157,7 +138,7 @@ $_SESSION = array();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&display=swap" rel="stylesheet">
-    <title>confirmation</title>
+    <title>Confirmation</title>
 </head>
 <body>
 
@@ -167,18 +148,31 @@ $_SESSION = array();
         <a href="index.php" class=btn_retour_accueil>Retour à l'accueil</a>
     </div>
     
-    
-    <h1 class="titre_confirm">Votre réservation a bien été enregistrée ! <br>
-    Un mail de confirmation vient de vous être envoyé !</h1> 
-    
-    <div class="video_validation">
-        <video autoplay muted>
-            <source src="avion.mp4" type="video/mp4">
-        </video>
-    </div>
-    
+    <!-- Envoi de l'e-mail  -->
+    <?php
 
-    <!-- <p><?= $total ?> € </p> -->
+    if (mail($_POST["email"],  "Confirmation de votre réservation", $message, $headers)) {
+        echo " <h1 class=\"titre_confirm\">Votre réservation a bien été enregistrée ! <br>
+        Un mail de confirmation vient de vous être envoyé !</h1> 
+        
+        <div class=\"video_validation\">
+            <video autoplay muted>
+                <source src=\"avion.mp4\" type=\"video/mp4\">
+            </video>
+        </div>";
+
+    } else {
+        echo "<h1 class=\"titre_confirm\">Une erreur s'est produite lors de l'envoi de l'e-mail </h1> 
+        
+        <div class=\"video_validation\">
+            <video autoplay muted>
+                <source src=\"avion.mp4\" type=\"video/mp4\">
+            </video>
+        </div>";
+    }
+    ?>
+
+
 
     <!-- FOOTER -->
     <footer>

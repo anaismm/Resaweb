@@ -20,7 +20,7 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h1 class="titre_concept">Le concept</h1>
+            <h1 id="concept" class="titre_concept">Le concept</h1>
             <div class="line"></div>
         </div>
 
@@ -40,11 +40,11 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h1 class="titre_concept">La créatrice</h1>
+            <h1 id="creatrice" class="titre_concept">La créatrice</h1>
             <div class="line"></div>
         </div>
 
-        <section class="creatrice">
+        <section  class="creatrice">
             <div class="txt_creatrice">
                 <p>Je m’appelle Anaïs et je suis étudiante en première année de BUT MMI (Bachelor Universitaire de Technologie de Métiers du Multimédia et de l’Internet). Dans le cadre d’un projet scolaire où l’on devait réaliser un site de réservation, j’ai développé l’intégralité de ce site Internet. Cela va de la recherche du concept au développement front-end et back-end en passant par le design ou encore la création de la base de données.</p>
             </div>
@@ -53,11 +53,11 @@
 
         <div class="lineconcept">
             <div class="line"></div>
-            <h1 class="titre_concept">Mentions légales</h1>
+            <h1 id="mention_legale" class="titre_concept">Mentions légales</h1>
             <div class="line"></div>
         </div>
 
-        <section class="mentions_legales">
+        <section  class="mentions_legales">
             <div class="ml">
                 <div class="bloc_info">
                     <h2>Créatrice</h2>
@@ -108,9 +108,9 @@
 
         <section class="about">
             <h3>À propos</h3>
-            <a href="about.php#concept">Le concept</a>
-            <a href="about.php#creatrice">La créatrice</a>
-            <a href="about.php#mention_legale">Mentions légales</a>
+            <a href="#concept">Le concept</a>
+            <a href="#creatrice">La créatrice</a>
+            <a href="#mention_legale">Mentions légales</a>
             
         </section>
     </footer>
