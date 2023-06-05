@@ -89,6 +89,8 @@ $stmt=$db->query($requete); // pour executer notre requete
 /////////////////////////
 
 
+
+
 ////////////RECUPERER NOM DES VOYAGES/////////////
 $nom_dest="";
 
@@ -100,7 +102,7 @@ $result = $stmt-> fetchall(PDO::FETCH_ASSOC);
 foreach ($result as $dest) {
     $nom_dest.=$dest["nom_parcours"]." "."et"." ";
 } 
-$name_dest = substr($nom_dest, 0, -2);
+$name_dest = substr($nom_dest, 0, -4);
 
 // echo ($name_dest);
 
@@ -108,7 +110,7 @@ $name_dest = substr($nom_dest, 0, -2);
 
 
 
-// MAIL 
+// MAIL POUR LE CLIENT
 $message = "<html>
     <head>
     <title>Confirmation de réservation</title>
@@ -122,6 +124,26 @@ $message = "<html>
 
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n" . 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+$mail_sent = mail($_POST["email"],  "Confirmation de votre réservation", $message, $headers);
+
+
+// MAIL POUR LE GESTIONNAIRE
+$to = "anais.michel@edu.univ-eiffel.fr";
+$subject = "Nouvelle réservation effectuée";
+$message_gest = "<html>
+<head>
+<title> Nouvelle réservation effectuée </title>
+</head>
+<body>
+<p>Une réservation de {$total} € pour le {$name_dest} a été effectuée au nom de {$_POST["prenom"]} {$_POST["nom"]}</p>
+</body>
+</html>";
+
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers = 'Content-Type: text/html; charset=UTF-8' . "\r\n" . 'From: noreply@resaweb.michel.butmmi.o2switch.site' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+
+$mail_gest = mail($to,$subject,$message_gest,$headers);
 
 
 
@@ -169,7 +191,7 @@ $_SESSION = array();
     <!-- Envoi de l'e-mail  -->
     <?php
 
-    if (mail($_POST["email"],  "Confirmation de votre réservation", $message, $headers)) {
+    if ($mail_sent) {
         echo " <h1 class=\"titre_confirm\">Votre réservation a bien été enregistrée ! <br>
         Un mail de confirmation vient de vous être envoyé !</h1> 
         
